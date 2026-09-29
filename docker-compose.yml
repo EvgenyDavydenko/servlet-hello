@@ -1,0 +1,18 @@
+services:
+    openjdk:
+        build: ./
+        image: openjdk17-noble:latest
+        container_name: openjdk17-noble
+        user: ubuntu
+        ports:
+            - 8080:8080
+        volumes:
+            - ./:/home/ubuntu/servlet-app
+            - ./.m2:/home/ubuntu/.m2
+        restart: always
+        networks:
+            - docker_network
+
+networks:
+    docker_network:
+        driver: bridge
